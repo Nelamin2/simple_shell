@@ -14,20 +14,19 @@
  *
  */
 
-void read_line(char *line)
-{ 
+char *read_line(char *line)
+{
 size_t size = 0;
 if (getline(&line, &size, stdin) == -1)
+{
+perror("Error reading input");
+exit(EXIT_FAILURE);
+}
+else 
 {
 if (feof(stdin))
 {screen("\n");
 exit(EXIT_SUCCESS);
-}
-else
-{
-screen("reading input failed");
-exit(EXIT_FAILURE);
-}
-free(line);
+}return(line);
 }
 }

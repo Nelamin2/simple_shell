@@ -2,15 +2,23 @@
 #define SMPSHELL_H_
 
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include <unistd.h>
+#include <ucontext.h>
+#include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
+#include <pthread.h>
+#include <sys/wait.h>
+#include "builtin.h"
+#include "env.h"
 
-void screen(const char *line);
 void prompt_always_on(void);
-void read_line(char *line);
-void run_command(const char *line[]);
+char *read_line(char *line);
+void perform_exit(int status);
+void run_command(const char *line);
 void parse_line(const char *line, char *arguments[]);
-char *path_tracker(char *line)
+char *path_tracker(const char *command);
+void screen(const char *line);
+extern char **environ;
+extern char **env_var;
 #endif
