@@ -15,6 +15,7 @@
  */
  char *path_tracker(const char *command)
 {
+size_t j;
 char *direction; 
 char *cpdirection;
 const char *delimiter = ":";
@@ -24,7 +25,7 @@ char *token;
 path = NULL;
 direction = getenv("PATH");
 if (direction == NULL) {
-screen("PATH environment variable not found\n");
+fprintf(stderr, "PATH environment variable not found\n");
 return NULL;
 }
 cpdirection = strdup(direction);
@@ -36,15 +37,27 @@ exit(EXIT_FAILURE);
 token = strtok(cpdirection, delimiter);
 while (token != NULL)
 {
+printf("Command: %s\n", command);
 path = malloc(strlen(token) + strlen(command) + 2);
 if (path == NULL)
 {
 perror("Memory allocation error");
+free(cpdirection);
 exit(EXIT_FAILURE);
 }
-strcpy((char *)path, token);
-strcat((char *)path, "/");
-strcat((char *)path, command);
+sprintf(path, "%s/%s", token, command);
+  printf("Command Bytes: ");
+        for (j = 0; j < strlen(command); ++j) {
+            printf("%02X ", (unsigned char)command[j]);
+        }
+        printf("\n");
+
+        printf("Path Bytes: ");
+        for (j = 0; j < strlen(path); ++j) {
+            printf("%02X ", (unsigned char)path[j]);
+        }
+        printf("\n");
+	printf("Checking path: %s\n", path);
 if (stat(path, &buffer) == 0)
 {
 free(cpdirection);
@@ -52,7 +65,9 @@ return (path);
 }
 else
 {
+perror("Error in stat");
 free(path);
+path = NULL;
 token = strtok(NULL, delimiter);
 }
 }

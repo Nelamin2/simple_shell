@@ -13,12 +13,14 @@
 #include "env.h"
 
 void prompt_always_on(void);
-char *read_line(char *line);
+char *read_line(void);
 void perform_exit(int status);
 void run_command(const char *line);
 void parse_line(const char *line, char *arguments[]);
 char *path_tracker(const char *command);
 void screen(const char *line);
+char *ggetline(void);
+void handle_path(const char *action, const char *directory);
 extern char **environ;
 extern char **env_var;
 #endif

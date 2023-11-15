@@ -14,7 +14,8 @@
  *@line: input from user
  *Return: 0
  */
-
+#define MAX_PATH_LENGTH 1024
+#define MAX_COMMAND_LENGTH 1024
 int main(void)
 {
 int x;
@@ -24,14 +25,14 @@ char *cmd[] = {"ls", "-l", NULL};
 while (1)
 {
 prompt_always_on();
-command = read_line(command);
+command = read_line();
 if (strcmp(command, "exit\n") == 0)
 {
 perform_exit(0);
 }
 parse_line(command, arguments);
-run_command((const char *)cmd);
 path_tracker(command);
+run_command((const char *)cmd);
 }
 if (strcmp(command, "env\n") == 0)
 {
@@ -42,9 +43,12 @@ screen("[INFO] Successfully printed environment variables.");
 }
 else
 {
-screen( "[ERROR] Failed to print environment variables.");
+screen("[ERROR] Failed to print environment variables.");
 }
-printf("[INFO] Program finished.");
 }
-return(0);
+screen("[INFO] Program finished.");
+handle_path("add", "/new/directory");
+handle_path("remove", "/old/directory");
+handle_path("search", "executable");
+return (0);
 }

@@ -13,20 +13,22 @@
  *
  *
  */
-
-char *read_line(char *line)
+void screen(const char *line);
+char *read_line(void)
 {
+char *line;
 size_t size = 0;
 if (getline(&line, &size, stdin) == -1)
 {
 perror("Error reading input");
 exit(EXIT_FAILURE);
 }
-else 
+else
 {
 if (feof(stdin))
 {screen("\n");
 exit(EXIT_SUCCESS);
-}return(line);
+}
+return (line);
 }
 }
