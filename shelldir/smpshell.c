@@ -20,13 +20,14 @@ int main(void)
 {
 int x;
 char *arguments[80];
-char *command;
+char *line;
 char *cmd[] = {"ls", "-l", NULL};
 while (1)
 {
 prompt_always_on();
-command = read_line();
-if (strcmp(command, "exit\n") == 0)
+line = read_line();
+line = rm_newline(line);
+if (strcmp(line, "exit\n") == 0)
 {
 perform_exit(0);
 }

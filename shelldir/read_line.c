@@ -25,7 +25,7 @@ exit(EXIT_FAILURE);
 }
 else
 {
-if (feof(stdin))
+if (*line == '\n' || *line == '\0')
 {screen("\n");
 exit(EXIT_SUCCESS);
 }

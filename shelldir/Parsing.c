@@ -9,19 +9,30 @@
 
 /**
  * parse_line - tokenizes input into command and arguments
- * @input: input command
+ * @line: input command
  * @arguments: array to store command and arguments
+ * Return: input
  */
-
-void parse_line(const char *line, char *arguments[])
+char **parse_line( char *line)
 {
 int counter = 0;
-char *token = strtok((char *)line, " ");
-while (token != NULL)
+char **sep_tok;
+char *tmp;
+char *token;
+sep_tok = malloc(sizeof(char *) * _strlen(line));
+if (!sep_tok)
 {
-arguments[counter++] = token;
-token = strtok(NULL, " ");
+screen("allocation error\n");
+exit(EXIT_FAILURE);
 }
-arguments[counter] = NULL;
+tmp = strdup(line);
+token = strtok((char *)tmp, " ");
+for (i = 0; token; i++)
+{
+sep_tok[i] = strdup(token);
+sep_tok = strtok(NULL, " ");
 }
-
+sep_tok[i] = NULL;
+free(temp);
+return (sep_tok);
+}

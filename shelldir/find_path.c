@@ -10,22 +10,22 @@
 #include <sys/stat.h>
 /**
  * path_tracker- find teh corrct directory
- * @ine: the comand to ftnd the poath for
+ * @path: the path to track
  * Return: NULL.
  */
- char *path_tracker(const char *command)
+int *path_tracker(const char **path)
 {
-size_t j;
 char *direction; 
 char *cpdirection;
 const char *delimiter = ":";
 char *path;
+char final_path;
 struct stat buffer;
-char *token;
+char *ph;
 path = NULL;
 direction = getenv("PATH");
 if (direction == NULL) {
-fprintf(stderr, "PATH environment variable not found\n");
+screen ( "PATH environment variable not found\n");
 return NULL;
 }
 cpdirection = strdup(direction);
@@ -34,43 +34,20 @@ if (cpdirection == NULL)
 perror("Memory allocation error");
 exit(EXIT_FAILURE);
 }
-token = strtok(cpdirection, delimiter);
-while (token != NULL)
+ph = strtok(cpdirection, delimiter);
+while (ph != NULL)
 {
-printf("Command: %s\n", command);
-path = malloc(strlen(token) + strlen(command) + 2);
-if (path == NULL)
+final_path = compose_path(*path, ph);
+if (stat(final_path, &buf) == 0)
 {
-perror("Memory allocation error");
+*path = strdup(final_path);
+free(final_path);
+return (0);
+}
+free(final_path);
+ph = strtok(NULL, ":");
+free(direction);
 free(cpdirection);
-exit(EXIT_FAILURE);
 }
-sprintf(path, "%s/%s", token, command);
-  printf("Command Bytes: ");
-        for (j = 0; j < strlen(command); ++j) {
-            printf("%02X ", (unsigned char)command[j]);
-        }
-        printf("\n");
-
-        printf("Path Bytes: ");
-        for (j = 0; j < strlen(path); ++j) {
-            printf("%02X ", (unsigned char)path[j]);
-        }
-        printf("\n");
-	printf("Checking path: %s\n", path);
-if (stat(path, &buffer) == 0)
-{
-free(cpdirection);
-return (path);
-}
-else
-{
-perror("Error in stat");
-free(path);
-path = NULL;
-token = strtok(NULL, delimiter);
-}
-}
-free(cpdirection);
-return (NULL);
+return (1);
 }
