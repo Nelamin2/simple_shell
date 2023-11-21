@@ -14,26 +14,26 @@
  *@line: input from user
  *Return: 0
  */
-#define MAX_PATH_LENGTH 1024
-#define MAX_COMMAND_LENGTH 1024
-int main(void)
+int main(int argc, char *argv[])
 {
 int x;
-char *arguments[80];
+char **sep_tok;
 char *line;
-char *cmd[] = {"ls", "-l", NULL};
 while (1)
 {
 prompt_always_on();
 line = read_line();
+if (*line == '\n' || *line == '\0')
+{}
 line = rm_newline(line);
 if (strcmp(line, "exit\n") == 0)
 {
 perform_exit(0);
 }
-parse_line(command, arguments);
-path_tracker(command);
-run_command((const char *)cmd);
+sep_tok = parse_line(line);
+if ( !sep_tok || !sep_tok[0])
+{}
+run_command((sep_tok, argv [0]);
 }
 if (strcmp(command, "env\n") == 0)
 {
@@ -47,9 +47,6 @@ else
 screen("[ERROR] Failed to print environment variables.");
 }
 }
-screen("[INFO] Program finished.");
-handle_path("add", "/new/directory");
-handle_path("remove", "/old/directory");
-handle_path("search", "executable");
+free_memory_pp(tokens);
 return (0);
 }
