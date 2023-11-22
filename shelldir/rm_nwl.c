@@ -20,3 +20,4 @@ if (size > 0 && line[size - 1] == '\n')
 {
 line[size - 1] = '\0';
 }
+}

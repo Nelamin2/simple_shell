@@ -6,7 +6,6 @@
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include "env.h"
 #include "builtin.h"
 void run_command(char **path, char *file)
 {

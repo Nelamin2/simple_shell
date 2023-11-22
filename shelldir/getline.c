@@ -7,7 +7,6 @@
 #include <pthread.h>
 #include <sys/wait.h>
 #include "builtin.h"
-#include "env.h"
 
 #define BUFFER_SIZE 1024 
 char *ggetline()

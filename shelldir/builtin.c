@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include "builtin.h"
 #include "smpshell.h"
-#include "env.h"
 /**
  * built-inspec - seacrh for a built in command
  * @command: the given command
@@ -27,7 +26,7 @@ return (builtin_command[i]);
  *
  * Return: the function to be executed, else NULL
  */
-int (*bring_builtin(char **command))(char **, int, char *)
+int (*bring_builtin(char **command))(char **args, int status, char *filename);
 {
 builtinz x = built_inspec(command[0]);
 if (x.command)

@@ -14,10 +14,10 @@
 
 void prompt_always_on(void);
 char *read_line(void);
+char *rm_nline(char *line);
+char *parse_line(char *line);
 void perform_exit(int status);
 void run_command(char **path, char *file);
-void parse_line(const char *line, char *arguments[]);
-sep_tok = malloc(sizeof(char *) * _strlen(line));
 char *compose_path(char *token, char *ph);
 void screen(const char *line);
 char *ggetline(void);

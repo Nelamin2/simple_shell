@@ -10,7 +10,7 @@ typedef struct builtinz
 } builtinz;
 
 int benv(char **cmd, int status, char *file);
-int (*bring_builtin(char **command))(char **, int, char *)
+int (*bring_builtin(char **command))(char **args, int status, char *filename);
 builtinz built_inspec(char *command);
 
 

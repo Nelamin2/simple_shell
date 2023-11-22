@@ -1,4 +1,3 @@
-#include "smpshell.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -6,7 +5,7 @@
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-
+#include "smpshell.h"
 /**
  * parse_line - tokenizes input into command and arguments
  * @line: input command
@@ -14,10 +13,10 @@
  * Return: user input
  */
 int xstrlen(char *s);
-char **parse_line(char *line)
+char *parse_line(char *line)
 {
 int counter;
-char **sep_tok;
+char *sep_tok;
 char *tmp;
 char *token;
 int x;
@@ -31,12 +30,12 @@ exit(EXIT_FAILURE);
 }
 tmp = xstrdup(line);
 token = strtok((char *)tmp, " ");
-for (i = 0; token; i++)
+for (counter = 0; token; counter++)
 {
-sep_tok[i] = xstrdup(token);
+sep_tok[counter] = xstrdup(token);
 sep_tok = strtok(NULL, " ");
 }
-sep_tok[i] = NULL;
-free(temp);
+sep_tok[counter] = NULL;
+free(tmp);
 return (sep_tok);
 }

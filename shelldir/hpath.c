@@ -7,7 +7,6 @@
 #include <pthread.h>
 #include <sys/wait.h>
 #include "builtin.h"
-#include "env.h"
 
 #define MAX_PATH_LENGTH 1024
 #define MAX_COMMAND_LENGTH 1024

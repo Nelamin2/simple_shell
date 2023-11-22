@@ -8,7 +8,6 @@
 #include "smpshell.h"
 #include <sys/wait.h>
 #include "builtin.h"
-#include "env.h"
 
 /**
  * memory_free - Free a pointer
