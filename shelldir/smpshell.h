@@ -11,7 +11,6 @@
 #include <sys/wait.h>
 #include <errno.h>
 #include "builtin.h"
-#include "env.h"
 
 void prompt_always_on(void);
 char *read_line(void);
@@ -28,7 +27,7 @@ extern char **env_var;
 int xatoi(char *s);
 void memory_free2(char **p);
 void memory_free(char *p);
-int _isalpha(int c);
+int xisalpha(int c);
 int xstrcmp(char *s1, char *s2);
 int xputchar(char c);
 char *xstrncpy(char *dest, char *src, int n);

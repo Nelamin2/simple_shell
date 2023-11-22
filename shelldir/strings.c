@@ -7,18 +7,16 @@
 #include <pthread.h>
 #include <sys/wait.h>
 #include "builtin.h"
-#include "env.h"
-#include <smpshell.h>
+#include "smpshell.h"
 /**
  * xstrcmp - compare string values
  * @s1: input value
  * @s2: input value
- *
  * Return: s1[i] - s2[i]
  */
 int xstrcmp(char *s1, char *s2)
 {
-intt i;
+int i;
 i = 0;
 while (s1[i] != '\0' && s2[i] != '\0')
 {

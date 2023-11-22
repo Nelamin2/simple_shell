@@ -43,7 +43,7 @@ while (ph != NULL)
 final_path = compose_path(*path, ph);
 if (stat(final_path, &buf) == 0)
 {
-*path = strdup(final_path);
+*path = xstrdup(final_path);
 free(final_path);
 return (0);
 }

@@ -2,7 +2,6 @@
 #define BUILTIN_H
 
 #include "smpshell.h"
-#include "env.h"
 
 typedef struct builtinz
 {
@@ -10,11 +9,9 @@ typedef struct builtinz
 	int (*p)(char **, int, char *);
 } builtinz;
 
-int benv(char **cmd, int status, char *filename)
+int benv(char **cmd, int status, char *file);
 int (*bring_builtin(char **command))(char **, int, char *)
-builtinz built-inspec(char *command)
-extern char **env_var;
-extern char **environ;
+builtinz built_inspec(char *command);
 
 
 #endif

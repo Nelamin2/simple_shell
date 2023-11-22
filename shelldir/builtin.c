@@ -8,7 +8,7 @@
  *
  * Return: the position of the command function the builtins array, 
  */
-builtinz built-inspec(char *command)
+builtinz built_inspec(char *command)
 {
 builtinz builtin_cmd[] = 
 {
@@ -17,7 +17,7 @@ builtinz builtin_cmd[] =
 };
 int counter;
 for (counter = 0; counter < 2; counter++)
-if (strcmp(builtin_cmd[counter].command, command) == 0)
+if (xstrcmp(builtin_cmd[counter].command, command) == 0)
 return (builtin_command[i]);
 }
 
@@ -29,7 +29,7 @@ return (builtin_command[i]);
  */
 int (*bring_builtin(char **command))(char **, int, char *)
 {
-builtinz x = built-inspec(command[0]);
+builtinz x = built_inspec(command[0]);
 if (x.command)
 return (x.p);
 return (NULL);
@@ -42,18 +42,18 @@ return (NULL);
  * @filename: unused
  * Return: Always 0
  */
-int benv(char **cmd, int status, char *filename)
+int benv(char **cmd, int status, char *file)
 {
 int counter;
 for (counter = 0; counter[i]; i++)
 {
 screen(environ[i]);
-putchar('\n');
+xputchar('\n');
 }
 return (0);
 }
 /**
- * exit_cmd - builtin Implementation of exit command
+ * bexit- builtin Implementation of exit command
  * @commandd: command
  * @status: the status code
  * Return: exit with the status or

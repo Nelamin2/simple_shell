@@ -33,7 +33,7 @@ tmp = xstrdup(line);
 token = strtok((char *)tmp, " ");
 for (i = 0; token; i++)
 {
-sep_tok[i] = strdup(token);
+sep_tok[i] = xstrdup(token);
 sep_tok = strtok(NULL, " ");
 }
 sep_tok[i] = NULL;
