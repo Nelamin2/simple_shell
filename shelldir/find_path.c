@@ -11,11 +11,13 @@
 /**
  * path_tracker- find teh corrct directory
  * @path: the path to track
- * Return: NULL.
+ *@str: strinf to be duplicated
+ *Return: NULL.
  */
+char *xstrdup(char *str);
 int *path_tracker(const char **path)
 {
-char *direction; 
+char *direction;
 char *cpdirection;
 const char *delimiter = ":";
 char *path;
@@ -24,11 +26,12 @@ struct stat buffer;
 char *ph;
 path = NULL;
 direction = getenv("PATH");
-if (direction == NULL) {
-screen ( "PATH environment variable not found\n");
-return NULL;
+if (direction == NULL)
+{
+screen("PATH environment variable not found\n");
+return (NULL);
 }
-cpdirection = strdup(direction);
+cpdirection = xstrdup(direction);
 if (cpdirection == NULL)
 {
 perror("Memory allocation error");

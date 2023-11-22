@@ -27,7 +27,7 @@ p = NULL;
 
 
 /**
- * memory_free - Free a double pointer
+ * memory_free2 - Free a double pointer
  *@p: Double pointer to free
  **/
 void memory_free2(char **p)
@@ -39,13 +39,20 @@ memory_free(*tmp);
 free(p);
 }
 
+
+/**
+ * xatoi - converts a string to an integer
+ * @s: string to be converted
+ *
+ * Return: the int converted from the string
+ */
 int xatoi(char *s)
 {
 int sign = 1, i = 0;
 unsigned int res = 0;
 while (!(s[i] <= '9' && s[i] >= '0') && s[i] != '\0')
 {
-if (s[i] == '-') 		
+if (s[i] == '-')
 sign *= -1;
 i++;
 }

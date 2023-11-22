@@ -6,11 +6,11 @@
  * built-inspec - seacrh for a built in command
  * @command: the given command
  *
- * Return: the position of the command function  the builtins array, 
- */ 
+ * Return: the position of the command function the builtins array, 
+ */
 builtinz built-inspec(char *command)
 {
-builtinz  builtin_cmd[] = 
+builtinz builtin_cmd[] = 
 {
 {"exit",perform_exit},
 {"env", benv},
@@ -38,7 +38,7 @@ return (NULL);
 /**
  * benv_cmd - prints the env variables
  * @command: unused
- * @status:  status 
+ * @status: status 
  * @filename: unused
  * Return: Always 0
  */
@@ -54,10 +54,10 @@ return (0);
 }
 /**
  * exit_cmd - builtin Implementation of exit command
- * @commandd: command 
+ * @commandd: command
  * @status: the status code
  * Return: exit with the status or
- *  current  execution status 
+ *  current execution status
  */
 
 int bexit(char **command, int status, char *filename)

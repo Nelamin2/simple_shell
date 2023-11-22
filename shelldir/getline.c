@@ -28,7 +28,7 @@ if (size == 0)
 return NULL;
 }
 }
-endline = strchr(buffer + cursor, '\n');
+endline = xstrchr(buffer + cursor, '\n');
 if (endline != NULL)
 {
 length = endline - (buffer + cursor) + 1;
@@ -38,7 +38,7 @@ if (line == NULL)
 perror("Memory allocation error");
 exit(EXIT_FAILURE);
 }
-strncpy(line, buffer + cursor, length - 1);
+xstrncpy(line, buffer + cursor, length - 1);
 line[length - 1] = '\0';
 cursor += length;
 return (line);

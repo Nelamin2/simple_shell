@@ -11,7 +11,8 @@
 #include "env.h"
 /**
  * main - entry point for code
- *@line: input from user
+ *@argv: input from user
+ *@argc: number of arguments
  *Return: 0
  */
 int main(int argc, char *argv[])
@@ -31,9 +32,9 @@ if (strcmp(line, "exit\n") == 0)
 perform_exit(0);
 }
 sep_tok = parse_line(line);
-if ( !sep_tok || !sep_tok[0])
-{}
-run_command((sep_tok, argv [0]);
+if (!sep_tok || !sep_tok[0])
+continue;
+run_command(sep_tok, argv[0]);
 }
 if (strcmp(command, "env\n") == 0)
 {
@@ -47,6 +48,6 @@ else
 screen("[ERROR] Failed to print environment variables.");
 }
 }
-free_memory_pp(tokens);
+memory_free2(tokens);
 return (0);
 }

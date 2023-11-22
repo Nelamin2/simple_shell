@@ -9,6 +9,7 @@
 #include <stdbool.h>
 #include <pthread.h>
 #include <sys/wait.h>
+#include <errno.h>
 #include "builtin.h"
 #include "env.h"
 
@@ -28,5 +29,12 @@ int xatoi(char *s);
 void memory_free2(char **p);
 void memory_free(char *p);
 int _isalpha(int c);
-
+int xstrcmp(char *s1, char *s2);
+int xputchar(char c);
+char *xstrncpy(char *dest, char *src, int n);
+char *xstrncat(char *dest, char *src, int n);
+int xstrlen(char *s);
+char *xstrdup(char *str);
+char *xstrstr(char *haystack, char *needle);
+char *xstrchr(char *s, char c);
 #endif

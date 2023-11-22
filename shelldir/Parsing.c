@@ -10,22 +10,26 @@
 /**
  * parse_line - tokenizes input into command and arguments
  * @line: input command
- * @arguments: array to store command and arguments
- * Return: input
+ * @s: string to be sized
+ * Return: user input
  */
-char **parse_line( char *line)
+int xstrlen(char *s);
+char **parse_line(char *line)
 {
-int counter = 0;
+int counter;
 char **sep_tok;
 char *tmp;
 char *token;
-sep_tok = malloc(sizeof(char *) * _strlen(line));
+int x;
+counter =0;
+x = xstrlen(line);
+sep_tok = malloc(sizeof(char *) * x);
 if (!sep_tok)
 {
 screen("allocation error\n");
 exit(EXIT_FAILURE);
 }
-tmp = strdup(line);
+tmp = xstrdup(line);
 token = strtok((char *)tmp, " ");
 for (i = 0; token; i++)
 {

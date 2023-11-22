@@ -12,7 +12,9 @@
  *@line: input string
  * Return: input without new linw
  *
- */void remove_newline(char *line) {
+ */
+void remove_newline(char *line)
+{
 size_t size = strlen(line);
 if (size > 0 && line[size - 1] == '\n')
 {
