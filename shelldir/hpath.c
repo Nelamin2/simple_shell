@@ -11,7 +11,7 @@
 #define MAX_PATH_LENGTH 1024
 #define MAX_COMMAND_LENGTH 1024
 
-void handle_path(const char *action, const char *directory)
+void handle_path(char *action, char *directory)
 {
 char *dir;
 char new_path[MAX_PATH_LENGTH];

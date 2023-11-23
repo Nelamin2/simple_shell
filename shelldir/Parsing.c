@@ -13,16 +13,16 @@
  * Return: user input
  */
 int xstrlen(char *s);
-char *parse_line(char *line)
+char **parse_line(char *line)
 {
 int counter;
-char *sep_tok;
+char **sep_tok;
 char *tmp;
 char *token;
 int x;
 counter =0;
 x = xstrlen(line);
-sep_tok = malloc(sizeof(char *) * x);
+sep_tok =(char **) malloc(sizeof(char *) * x);
 if (!sep_tok)
 {
 screen("allocation error\n");

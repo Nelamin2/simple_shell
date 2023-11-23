@@ -9,15 +9,15 @@
  */
 builtinz built_inspec(char *command)
 {
-builtinz builtin_cmd[] = 
+builtinz builtin_command[] = 
 {
-{"exit",perform_exit},
+{"exit",bexit},
 {"env", benv},
 };
 int counter;
 for (counter = 0; counter < 2; counter++)
-if (xstrcmp(builtin_cmd[counter].command, command) == 0)
-return (builtin_command[i]);
+if (xstrcmp(builtin_command[counter].command, command) == 0)
+return (builtin_command[counter]);
 }
 
 /**
@@ -26,7 +26,7 @@ return (builtin_command[i]);
  *
  * Return: the function to be executed, else NULL
  */
-int (*bring_builtin(char **command))(char **args, int status, char *filename);
+int (*bring_builtin(char **command))(char **args, int status, char *filename)
 {
 builtinz x = built_inspec(command[0]);
 if (x.command)
@@ -41,16 +41,20 @@ return (NULL);
  * @filename: unused
  * Return: Always 0
  */
-int benv(char **cmd, int status, char *file)
+int benv(char **command, int status, char *file)
 {
 int counter;
-for (counter = 0; counter[i]; i++)
+(void) command;
+(void) status;
+(void) file;
+for (counter = 0; environ[counter]; counter++)
 {
-screen(environ[i]);
+screen(environ[counter]);
 xputchar('\n');
 }
 return (0);
 }
+
 /**
  * bexit- builtin Implementation of exit command
  * @commandd: command
@@ -59,30 +63,30 @@ return (0);
  *  current execution status
  */
 
-int bexit(char **command, int status, char *filename)
+int bexit(char **command, int status, char *file)
 {
 int counter = 0;
 if (!command[1])
 {
-memory_free(command);
+memory_free2(command);
 exit(status);
 }
 while (command[1][counter])
 {
 if (xisalpha(command[1][counter]) && command[1][counter] != '-')
 {
-screen(filename);
+screen(file);
 screen(": ");
 screen(command[0]);
 screen(": ");
 screen("Illegal number: ");
 screen(command[1]);
-screen('\n');
+xputchar('\n');
 return (1);
 }
-i++;
+counter++;
 }
-status = _xatoi(command[1]);
-memory_free(command);
+status = xatoi(command[1]);
+memory_free2(command);
 exit(status);
 }

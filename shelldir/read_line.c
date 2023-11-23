@@ -13,7 +13,7 @@
  *
  *
  */
-void screen(const char *line);
+void screen(char *line);
 char *read_line(void)
 {
 char *line;

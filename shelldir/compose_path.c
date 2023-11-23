@@ -21,14 +21,15 @@ char *compose_path(char *token, char *ph)
 {
 char *path;
 size_t length;
-length = strlen(path);
-path = malloc(strlen(ph) + strlen(command) + 2);
+path = malloc(xstrlen(ph) + xstrlen(token) + 2);
+length = xstrlen(path);
 if (path == NULL)
 {
 return (NULL);
 memset(path, 0, length);
-path = strcat(path, ph);
-path = strcat(path, "/");
-path = strcat(path, token);
+}
+path = xstrcat(path, ph);
+path = xstrcat(path, "/");
+path = xstrcat(path, token);
 return (path);
 }

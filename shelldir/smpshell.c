@@ -17,7 +17,7 @@
 int main(int argc __attribute__((unused)), char *argv[])
 {
 int x;
-char *sep_tok;
+char **sep_tok;
 char *line;
 int (*builtin)(char **, int, char *);
 x = 0;
@@ -42,4 +42,5 @@ else
 x = run_command(sep_tok, argv[0]);
 memory_free2(sep_tok);
 return (0);
+}
 }

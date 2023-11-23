@@ -1,3 +1,4 @@
+#include <string.h>
 /**
  * rm_nline - Removes the command
  * @line: command line
@@ -5,7 +6,8 @@
  */
 char *rm_nline(char *line)
 {
-char *tmp = line;
+char *tmp;
+tmp= line;
 tmp = strtok(tmp, "\n");
 return (tmp);
 }

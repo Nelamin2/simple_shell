@@ -32,7 +32,7 @@ p = NULL;
 void memory_free2(char **p)
 {
 char **tmp;
-tmo = p;
+tmp = p;
 for (; *tmp != NULL; tmp++)
 memory_free(*tmp);
 free(p);

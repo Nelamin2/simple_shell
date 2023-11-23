@@ -7,13 +7,10 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "builtin.h"
-void run_command(char **path, char *file)
+int run_command(char **path,  char *file)
 {
-char *path;
-char *arguments[20];
+int status;
 pid_t child_pid;
-int i;
-size_t j;
 child_pid = fork();
 if (child_pid < 0)
 {
@@ -28,8 +25,8 @@ path_tracker(path);
 }
 if (execve(path[0], path, environ) == -1)
 {
-perror(filename);
-free_memory_pp(path);
+perror(file);
+memory_free2(path);
 exit(EXIT_FAILURE);
 }
 }

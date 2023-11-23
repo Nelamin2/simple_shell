@@ -7,7 +7,7 @@
  * screen - printing function
  *@line: output to be displayed
  */
-void screen(const char *line)
+void screen(char *line)
 {
 write(STDOUT_FILENO, line, strlen(line));
 }
