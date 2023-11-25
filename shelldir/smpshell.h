@@ -17,7 +17,7 @@ void prompt_always_on(void);
 char *read_line(void);
 char *rm_nline(char *line);
 char **parse_line(char *line);
-int *path_tracker(char **path);
+int path_tracker(char **path);
 void perform_exit(int status);
 int  run_command(char **path, char *file);
 char *compose_path(char *token, char *ph);

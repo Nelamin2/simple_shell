@@ -30,10 +30,10 @@ exit(EXIT_FAILURE);
 }
 tmp = xstrdup(line);
 token = strtok((char *)tmp, " ");
-for (counter = 0; token; counter++)
+while (token)
 {
-sep_tok[counter] = xstrdup(token);
-sep_tok = strtok(NULL, " ");
+sep_tok[counter++] = xstrdup(token);
+token = strtok(NULL, " ");
 }
 sep_tok[counter] = NULL;
 free(tmp);

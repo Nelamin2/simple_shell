@@ -15,9 +15,15 @@ builtinz builtin_command[] =
 {"env", benv},
 };
 int counter;
+builtinz default_builtin;
+default_builtin.command = "default";
+default_builtin.p = NULL;
 for (counter = 0; counter < 2; counter++)
+{
 if (xstrcmp(builtin_command[counter].command, command) == 0)
 return (builtin_command[counter]);
+}
+return (default_builtin);
 }
 
 /**
@@ -89,4 +95,4 @@ counter++;
 status = xatoi(command[1]);
 memory_free2(command);
 exit(status);
-}
+  }

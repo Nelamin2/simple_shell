@@ -17,13 +17,15 @@
 char *xstrdup(char *str);
 int path_tracker( char **command)
 {
+char **sep_tok;
 char *direction;
 struct stat buf;
 char *cpdirection;
 const char *delimiter = ":";
 char *final_path;
 char *ph;
-char final_path[MAX_PATH_LENGTH];
+int count;
+count = 0;
 direction = getenv("PATH");
 cpdirection = xstrdup(direction);
 if (cpdirection == NULL)
@@ -38,9 +40,9 @@ final_path = compose_path(*command, ph);
 if (stat(final_path, &buf) == 0)
 {
 sep_tok = parse_line(final_path);
-while (sep_tok[token_count] != NULL)
+while (sep_tok[count] != NULL)
 {
-token_count++;
+count++;
 }
 free(*command);
 *command = xstrdup(final_path);
