@@ -8,6 +8,26 @@
 #include "smpshell.h"
 #include <sys/wait.h>
 #include "builtin.h"
+#include <ctype.h>
+
+/**
+ * is_whitespace- check if the input a whitespace
+ *@str: input string
+ *Return: 0 incase there's a whitspace
+ *else 1
+ */
+
+int is_whitespace(const char *str)
+{
+while (*str)
+{
+if (!isspace(*str))
+return (0);
+str++;
+}
+return (1);
+}
+
 /**
  * main - entry point for code
  *@argv: input from user
@@ -25,8 +45,13 @@ while (1)
 {
 prompt_always_on();
 line = read_line();
-if (*line == '\n' || *line == '\0')
-{}
+printf("Line read: %s\n", line);
+if (*line == '\n' || *line == '\0' || is_whitespace(line))
+{
+printf("Empty line detected.\n");
+memory_free(line);
+continue;
+}
 line = rm_nline(line);
 sep_tok = parse_line(line);
 if (!sep_tok || !sep_tok[0])
@@ -41,6 +66,6 @@ continue;
 else
 x = run_command(sep_tok, argv[0]);
 memory_free2(sep_tok);
-return (0);
 }
+return (0);
 }

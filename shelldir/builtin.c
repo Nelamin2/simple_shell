@@ -5,13 +5,12 @@
  * built-inspec - seacrh for a built in command
  * @command: the given command
  *
- * Return: the position of the command function the builtins array, 
+ * Return: the position of the command function the builtins array,
  */
 builtinz built_inspec(char *command)
 {
-builtinz builtin_command[] = 
-{
-{"exit",bexit},
+builtinz builtin_command[] = {
+{"exit", bexit},
 {"env", benv},
 };
 int counter;
@@ -43,7 +42,7 @@ return (NULL);
 /**
  * benv_cmd - prints the env variables
  * @command: unused
- * @status: status 
+ * @status: status
  * @filename: unused
  * Return: Always 0
  */
@@ -95,4 +94,4 @@ counter++;
 status = xatoi(command[1]);
 memory_free2(command);
 exit(status);
-  }
+}

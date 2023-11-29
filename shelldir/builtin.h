@@ -3,6 +3,12 @@
 
 #include "smpshell.h"
 
+/**
+ * struct builtinz - Structure for builtin commands
+ * @command: the command's name
+ * @p: the corresponding  function to handle  command
+ */
+
 typedef struct builtinz
 {
 	char *command;

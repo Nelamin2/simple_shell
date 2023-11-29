@@ -15,6 +15,7 @@
 
 void prompt_always_on(void);
 char *read_line(void);
+int is_whitespace(const char *str);
 char *rm_nline(char *line);
 char **parse_line(char *line);
 int path_tracker(char **path);
