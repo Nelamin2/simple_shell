@@ -45,10 +45,8 @@ while (1)
 {
 prompt_always_on();
 line = read_line();
-printf("Line read: %s\n", line);
 if (*line == '\n' || *line == '\0' || is_whitespace(line))
 {
-printf("Empty line detected.\n");
 memory_free(line);
 continue;
 }
