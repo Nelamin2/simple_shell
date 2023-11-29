@@ -16,19 +16,18 @@
 void screen(char *line);
 char *read_line(void)
 {
-char *line;
+char *line = NULL;
+int chars_read;
 size_t size = 0;
-if (getline(&line, &size, stdin) == -1)
+chars_read = getline(&line, &size, stdin);
+if (chars_read == -1)
 {
 perror("Error reading input");
 exit(EXIT_FAILURE);
 }
-else
+if (line[chars_read - 1] == '\n')
 {
-if (*line == '\n' || *line == '\0')
-{screen("\n");
-exit(EXIT_SUCCESS);
+line[chars_read - 1] = '\0';
 }
 return (line);
-}
 }
